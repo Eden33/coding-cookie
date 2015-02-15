@@ -1,0 +1,57 @@
+/* 
+Theme Name: Coding Cookie
+Author: Eduard Gopp
+Description: Theme based on "Catch-Box" theme
+Template: catch-box
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Version: 1.0
+*/ 
+
+@import url("../catch-box/style.css");
+
+#header-content {
+    padding: 1.5em 0 !important;
+}
+#site-description {
+    font-size: 18px;
+}
+/* Menu - Start */
+#access {
+    height: 44px;
+}
+#branding ul.menu li:hover > a,
+#branding ul.menu a:focus {
+    border-top: 1px solid #373737 !important;
+    border-bottom: 1px solid #373737 !important;   
+}
+
+/* 
+    Menu - prevent parent overrides on small devices.
+
+    The original template hides the standard head menu on small devices 
+    and utilize catchbox-menu.min.js to inject a <select> menu instead.
+    We don't do this, we use the standard menu as it fits perfectly our needs.
+*/
+#access .menu-header-container {
+    padding: 0px 0px 0px 2px !important;
+}
+#branding ul.menu a {
+    padding: 0 1.2125em !important;
+}
+#branding ul.menu {
+    display: block !important;
+}
+#branding ul.menu li {
+    float: left !important;
+    text-align: left !important;
+}
+/* Menu - End */
+
+@media screen and (max-width: 767px) {
+    #branding #searchform {
+        position: static;
+        text-align: center;
+        margin-top: 6px;
+    }
+}

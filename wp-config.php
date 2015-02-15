@@ -22,10 +22,12 @@ define('DB_NAME', '***REMOVED***');
 define('DB_USER', '***REMOVED***');
 
 /** MySQL database password */
+//define('DB_PASSWORD', '***REMOVED***');
 define('DB_PASSWORD', '***REMOVED***');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+//define('DB_HOST', 'localhost');
+define('DB_HOST', '***REMOVED***');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
