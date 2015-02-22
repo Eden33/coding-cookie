@@ -16,6 +16,14 @@ Version: 1.0
 #site-description {
     font-size: 18px;
 }
+.cc-active-element {
+    color: #1982d1;
+}
+.cc-active-element:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 /* Menu - Start */
 #access {
     height: 44px;
