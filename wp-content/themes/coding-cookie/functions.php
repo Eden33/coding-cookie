@@ -8,6 +8,7 @@
 /**
  * Enqueue custom scripts.
  * 
+ * @sine 1.0
  * @autor edi
  */
 function cc_enqueue_scripts() {
@@ -24,6 +25,29 @@ function cc_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'cc_enqueue_scripts' );
 
+/**
+ * @since 1.0
+ * @author edi
+ */
+function cc_wp_head() {
+    
+    // add search engine meta description to author-page: 
+    // http://www.codingcookie.com/author/edi
+    if(is_author('edi')) {
+        $about_the_author = 'Hi, my name is Eduard Gopp and I am a software developer from Austria. The goal of my website is to share knowledge and experience.';
+        echo '<meta name="description" content="'.$about_the_author.'"/>';
+        echo '<meta property="og:description" content="'.$about_the_author.'" />';
+    }
+}
+
+add_action('wp_head', 'cc_wp_head');   
+   
+/**
+ * Override catchbox footer function to inject custom footer content.
+ * 
+ * @since 1.0
+ * @author edi
+ */
 function catchbox_footer_content() {
 ?>
 <div class="copyright">Copyright © <?= date("Y"); ?>
