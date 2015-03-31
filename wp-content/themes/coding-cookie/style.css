@@ -60,15 +60,16 @@ Version: 1.0
 .sale-img { margin: 7px 0px !important; }
 /* Page: /for-sale - End */
 
-a { white-space: nowrap; }
 #content nav { padding: 0; height: 45px; }
 .entry-summary { padding: 1em 0 0; }
 .entry-title { padding-top: 0; }
+.entry-meta a { white-space: nowrap; }
 .entry-content h1, .entry-content h2 , .entry-content h3 { color: #222; }
 .entry-content h2 { font-size: 23px; }
 .entry-content h3 { font-size: 18px; }
 .entry-header-content { margin-top: 0.6em; }
 p { margin-bottom: 1.2em; }
+#site-generator a { white-space: nowrap; }
 .tagcloud a { white-space: nowrap; }
 
 @media screen and (max-width: 767px) {
