@@ -60,6 +60,19 @@ Version: 1.0
 .sale-img { margin: 7px 0px !important; }
 /* Page: /for-sale - End */
 
+/* Page /about - Start */
+#about-the-author { 
+    border-top: 1px solid #ccc; 
+    border-bottom: 1px solid #ccc; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 195px;
+}
+#about-the-author-img {
+    margin: 0 0 10px 10px;
+}
+/* Page /about - End */
+
 #content nav { padding: 0; height: 45px; }
 .entry-summary { padding: 1em 0 0; }
 .entry-title { padding-top: 0; }
@@ -84,4 +97,9 @@ p { margin-bottom: 1.2em; }
     .entry-content h1 { font-size: 21px !important; }
     .entry-content h2 { font-size: 18px !important; }
     .entry-content h3 { font-size: 14px !important; }
+    #about-the-author-img {
+        margin: 0 0 6px 6px;
+        max-width: 90px;
+        height: auto;
+    }
 }
