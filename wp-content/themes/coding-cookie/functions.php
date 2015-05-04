@@ -21,6 +21,9 @@ function cc_enqueue_scripts() {
      * </ul>
      */
     wp_enqueue_script( 'cc-solution', get_stylesheet_directory_uri() . '/js/solution.js', array( 'jquery' ), false, true );  
+
+    wp_enqueue_script('sh-decode-html-special-chars',
+            get_stylesheet_directory_uri() . '/js/sh-decode-html-special-chars.js', array('jquery'), false, true);
 }
 
 add_action( 'wp_enqueue_scripts', 'cc_enqueue_scripts' );
