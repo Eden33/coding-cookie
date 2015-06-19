@@ -68,3 +68,12 @@ function catchbox_footer_content() {
 </div>
 <?php
 }
+
+function exclude_single_posts_home($query) {
+  if ($query->is_home() && $query->is_main_query()) {
+    // 343 is http://www.codingcookie.com/bridge-pattern/
+    $query->set('post__not_in', array(343));
+  }
+}
+
+add_action('pre_get_posts', 'exclude_single_posts_home');
