@@ -71,9 +71,18 @@ function catchbox_footer_content() {
 
 function exclude_single_posts_home($query) {
   if ($query->is_home() && $query->is_main_query()) {
-    // 343 is http://www.codingcookie.com/bridge-pattern/
     $query->set('post__not_in', array(343));
   }
 }
 
 add_action('pre_get_posts', 'exclude_single_posts_home');
+
+//add_filter('the_content', 'filter_the_content');
+//
+//function filter_the_content( $content ) {
+////    if(is_single( 'bridge-pattern' )) {
+////        return 'Sorry I have removed this article because I was not satisfied with it.<br/>'
+////        . 'I am sure you will find other good articles about this topic if you search the web.';
+////    }
+//    return $content;
+//}

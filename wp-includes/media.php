@@ -847,6 +847,8 @@ function img_caption_shortcode( $attr, $content = null ) {
 			$content = $matches[1];
 			$attr['caption'] = trim( $matches[2] );
 		}
+	} elseif ( strpos( $attr['caption'], '<' ) !== false ) {
+		$attr['caption'] = wp_kses( $attr['caption'], 'post' );
 	}
 
 	/**
@@ -2375,7 +2377,7 @@ function wp_embed_handler_googlevideo( $matches, $attr, $url, $rawattr ) {
  */
 function wp_embed_handler_youtube( $matches, $attr, $url, $rawattr ) {
 	global $wp_embed;
-	$embed = $wp_embed->autoembed( "https://youtube.com/watch?v={$matches[2]}" );
+	$embed = $wp_embed->autoembed( sprintf( "https://youtube.com/watch?v=%s", urlencode( $matches[2] ) ) );
 
 	/**
 	 * Filter the YoutTube embed output.
