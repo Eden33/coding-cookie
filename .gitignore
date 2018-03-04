@@ -1,1 +1,4 @@
 /nbproject/*
+
+# ignore wordpress readme
+/readme.html
