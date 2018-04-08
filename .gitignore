@@ -1,4 +1,7 @@
-/nbproject/*
-
 # ignore wordpress readme
 /readme.html
+
+# ignore eclipse specific directories/files
+/.settings
+.buildpath
+.project
