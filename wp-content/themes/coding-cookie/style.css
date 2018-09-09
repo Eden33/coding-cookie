@@ -39,7 +39,7 @@ Version: 1.0
 
     The original template hides the standard head menu on small devices 
     and utilize catchbox-menu.min.js to inject a <select> menu instead.
-    We don't do this, we use the standard menu as it fits perfectly our needs.
+    We don't display this <select> menu as the standard head menu is all we need.
 */
 #access .menu-header-container {
     padding: 0px 0px 0px 2px !important;
@@ -54,6 +54,8 @@ Version: 1.0
     float: left !important;
     text-align: left !important;
 }
+.tinynav { display: none !important; }
+
 /* Menu - End */
 
 /* Page: /for-sale - Start */
