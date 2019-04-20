@@ -5,3 +5,6 @@
 /.settings
 .buildpath
 .project
+
+# ignore wp-config
+wp-config.php
