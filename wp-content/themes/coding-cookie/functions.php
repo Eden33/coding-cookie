@@ -58,9 +58,6 @@ function catchbox_footer_content() {
         <span>Coding Cookie</span>
     </a>
     . All Rights Reserved.
-    <a href="http://<?= $_SERVER['SERVER_NAME']; ?>/legal-notice/" title="Legal notice">
-        <span> Legal Notice</span>
-    </a>
 </div>
 <div class="powered">
     <span>Author: </span>
