@@ -10,12 +10,32 @@
  */
 class WPSEO_Endpoint_Statistics implements WPSEO_Endpoint {
 
-	const REST_NAMESPACE = 'yoast/v1';
-	const ENDPOINT_RETRIEVE = 'statistics';
+	/**
+	 * The namespace of the REST route.
+	 *
+	 * @var string
+	 */
+	public const REST_NAMESPACE = 'yoast/v1';
 
-	const CAPABILITY_RETRIEVE = 'read';
+	/**
+	 * The route of the statistics endpoint.
+	 *
+	 * @var string
+	 */
+	public const ENDPOINT_RETRIEVE = 'statistics';
 
-	/** @var WPSEO_Statistics_Service Service to use */
+	/**
+	 * The name of the capability needed to retrieve data using the endpoints.
+	 *
+	 * @var string
+	 */
+	public const CAPABILITY_RETRIEVE = 'read';
+
+	/**
+	 * Service to use.
+	 *
+	 * @var WPSEO_Statistics_Service
+	 */
 	protected $service;
 
 	/**
@@ -29,20 +49,17 @@ class WPSEO_Endpoint_Statistics implements WPSEO_Endpoint {
 
 	/**
 	 * Registers the REST routes that are available on the endpoint.
+	 *
+	 * @return void
 	 */
 	public function register() {
 		// Register fetch config.
-		register_rest_route( self::REST_NAMESPACE, self::ENDPOINT_RETRIEVE, array(
+		$route_args = [
 			'methods'             => 'GET',
-			'callback'            => array(
-				$this->service,
-				'get_statistics',
-			),
-			'permission_callback' => array(
-				$this,
-				'can_retrieve_data',
-			),
-		) );
+			'callback'            => [ $this->service, 'get_statistics' ],
+			'permission_callback' => [ $this, 'can_retrieve_data' ],
+		];
+		register_rest_route( self::REST_NAMESPACE, self::ENDPOINT_RETRIEVE, $route_args );
 	}
 
 	/**
