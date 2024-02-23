@@ -8,7 +8,7 @@
  * different template.
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 
@@ -41,5 +41,4 @@ get_header(); ?>
     do_action( 'catchbox_after_primary' ); ?>    
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>

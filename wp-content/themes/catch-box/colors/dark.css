@@ -19,7 +19,18 @@ hr {
 }
 
 /* Text elements */
+.wp-block-pullquote {
+	color: #bbb;
+}
 blockquote cite {
+	color: #999;
+}
+.wp-block-quote cite,
+.wp-block-pullquote cite,
+.wp-block-pullquote footer,
+.wp-block-pullquote__citation,
+[class^="wp-block-"]:not(.wp-block-gallery) figcaption,
+[class^="wp-block-"]:not(.wp-block-gallery) figcaption:before {
 	color: #999;
 }
 pre {
@@ -50,7 +61,8 @@ input#s:focus {
 }
 
 /* Links */
-a {
+.post-navigation a {
+	color: #bbb;
 }
 
 
@@ -77,6 +89,9 @@ a {
 #branding #s:focus {
 	color: #888;
 }
+.sidebar-top .widget {
+	background: none;
+}
 
 
 /* =Menu
@@ -98,17 +113,15 @@ a {
 #main {
 	background-color: #222;
 }
-#slider { 
-	background-color: #111111;
-    border-color: #333333;
-}
 .page-title {
 	color: #ccc;
 }
 .page-header,
 .hentry,
+.post-navigation,
 .no-results,
-.widget {
+.widget,
+#slider {
 	background-color: #111;
 	border-color: #333;
 }
@@ -119,10 +132,6 @@ a {
 .entry-title a {
 	color: #ddd;
 }
-.entry-title a:hover,
-.entry-title a:focus,
-.entry-title a:active {
-}
 .entry-meta {
 	color: #999;
 }
@@ -132,16 +141,23 @@ a {
 .comment-content h2 {
 	color: #fff;
 }
+.wp-block-quote:not(.is-large):not(.is-style-large),
+.wp-block-pullquote {
+	border-color: #fff;
+}
 .entry-content table,
-.comment-content table {
+.comment-content table,
+.wp-block-table {
 	border-color: #222;
 }
 .entry-content th,
-.comment-content th {
+.comment-content th,
+.wp-block-table th {
 	color: #999;
 }
 .entry-content td,
-.comment-content td {
+.comment-content td,
+.wp-block-table td {
 	border-color: #222;
 }
 .page-link {
@@ -500,6 +516,7 @@ li.bypostauthor a.comment-reply-link:active {
 	background: #222;
 	border-color: #2c2c2c;
 }
+
 /* Post Author threaded comments */
 .commentlist .children > li.bypostauthor {
 	background: #222;
@@ -556,19 +573,17 @@ li.bypostauthor a.comment-reply-link:active {
 #respond input#submit:active {
 	color: #40220c;
 }
-#respond #cancel-comment-reply-link {
-	color: #999;
-}
 #reply-title {
 	color: #ccc;
 }
 #cancel-comment-reply-link {
-	color: #777;
+	background-color: #ddd;
+	color: #111;
 }
 #cancel-comment-reply-link:focus,
 #cancel-comment-reply-link:active,
 #cancel-comment-reply-link:hover {
-	color: #00b4cc;
+	color: #fff;
 }
 
 
@@ -587,6 +602,10 @@ li.bypostauthor a.comment-reply-link:active {
 	border-color: #333;
 }
 
+/* Mobile Menu */
+.menu-access-wrap {
+    background-color: #3d3d3d;
+}
 
 /* =Print
 ----------------------------------------------- */

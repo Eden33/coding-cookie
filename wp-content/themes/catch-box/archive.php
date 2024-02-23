@@ -8,7 +8,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 
@@ -17,17 +17,11 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title">
-						<?php if ( is_day() ) : ?>
-							<?php printf( __( 'Daily Archives: %s', 'catchbox' ), '<span>' . get_the_date() . '</span>' ); ?>
-						<?php elseif ( is_month() ) : ?>
-							<?php printf( __( 'Monthly Archives: %s', 'catchbox' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'catchbox' ) ) . '</span>' ); ?>
-						<?php elseif ( is_year() ) : ?>
-							<?php printf( __( 'Yearly Archives: %s', 'catchbox' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'catchbox' ) ) . '</span>' ); ?>
-						<?php else : ?>
-							<?php _e( 'Blog Archives', 'catchbox' ); ?>
-						<?php endif; ?>
-					</h1>
+					<?php
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+
+						the_archive_description( '<div class="taxonomy-description">', '</div>' );
+					?>
 				</header>
 
 				<?php /* Start the Loop */ ?>
@@ -49,11 +43,11 @@ get_header(); ?>
 
 				<article id="post-0" class="post no-results not-found">
 					<header class="entry-header">
-						<h1 class="entry-title"><?php _e( 'Nothing Found', 'catchbox' ); ?></h1>
+						<h1 class="entry-title"><?php _e( 'Nothing Found', 'catch-box' ); ?></h1>
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
-						<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'catchbox' ); ?></p>
+						<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'catch-box' ); ?></p>
 						<?php get_search_form(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->
@@ -61,23 +55,22 @@ get_header(); ?>
 			<?php endif; ?>
 
 		</div><!-- #content -->
-        
-		<?php 
-        /** 
+
+		<?php
+        /**
          * catchbox_after_content hook
          *
          */
         do_action( 'catchbox_after_content' ); ?>
-            
+
 	</div><!-- #primary -->
-    
-	<?php 
-    /** 
+
+	<?php
+    /**
      * catchbox_after_primary hook
      *
      */
-    do_action( 'catchbox_after_primary' ); ?>    
+    do_action( 'catchbox_after_primary' ); ?>
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>

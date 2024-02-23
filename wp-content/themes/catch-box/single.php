@@ -3,25 +3,37 @@
  * The Template for displaying all single posts.
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 
 get_header(); ?>
 
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php 
+				// Start the loop.
+				while ( have_posts() ) : the_post();
 
-					<nav id="nav-single">
-						<h3 class="assistive-text"><?php _e( 'Post navigation', 'catchbox' ); ?></h3>
-						<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'catchbox' ) ); ?></span>
-						<span class="nav-next"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'catchbox' ) ); ?></span>
-					</nav><!-- #nav-single -->
+					// Include the single post content template.
+					get_template_part( 'content', 'single' );
 
-					<?php get_template_part( 'content', 'single' ); ?>
+					// If comments are open or we have at least one comment, load up the comment template.
+					if ( comments_open() || get_comments_number() ) {
+						comments_template();
+					}
 
-					<?php comments_template( '', true ); ?>
+					// Previous/next post navigation.
+					the_post_navigation( array(
+						'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next <span class="nav-icon">&rarr;</span>', 'catch-box' ) . '</span> ' .
+							'<span class="screen-reader-text">' . __( 'Next post:', 'catch-box' ) . '</span> ' .
+							'<span class="post-title">%title</span>',
+						'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( '<span class="nav-icon">&larr;</span> Previous', 'catch-box' ) . '</span> ' .
+							'<span class="screen-reader-text">' . __( 'Previous post:', 'catch-box' ) . '</span> ' .
+							'<span class="post-title">%title</span>',
+					) );
 
-				<?php endwhile; // end of the loop. ?>
+				// End of the loop.
+				endwhile;
+				?>
 
 		</div><!-- #content -->
         
@@ -42,5 +54,4 @@ get_header(); ?>
     do_action( 'catchbox_after_primary' ); ?>    
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>

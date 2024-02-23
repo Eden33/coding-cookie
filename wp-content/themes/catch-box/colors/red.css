@@ -37,6 +37,13 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89251e', endColorstr='#ba3027'); /* for IE */
 	color: #fff;
 }
+.mobile-menu-anchor a.genericon-menu:hover,
+.mobile-menu-anchor a.genericon-menu:focus,
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+	background-color: #89251e;
+	color: #fff;
+}
 #access-secondary {
     background-color: #ac2d24;
 }
@@ -44,21 +51,54 @@ body {
     color: #fff;
 }
 #colophon #access-footer ul.menu li {
-    border-left: 1px solid #89251e;	
-}
-#branding #access-secondary ul.menu a {
-    line-height: 2.6em;
+    border-left: 1px solid #89251e;
 }
 #branding #access, #colophon #access-footer {
 	border-bottom: 1px solid #89251e;
 	margin-bottom: 0;
 }
-#content #infinite-handle span {
-	background-color: #53810a;
+#content #infinite-handle span button,
+.wp-block-button__link {
+	background-color: #000;
 }
-#content #infinite-handle span:hover {
-	background-color: #3e6107;
+#content #infinite-handle span button:hover,
+#content #infinite-handle span button:focus,
+.wp-block-button__link:hover,
+.wp-block-button__link:focus {
+	background-color: #89251e;
 }
 #site-generator {
 	border-color: #89251e;
+}
+
+/* Mobile Menu */
+.menu-access-wrap {
+    background-color: #ba3027;
+}
+.toggled-on #access,
+.toggled-on #access ul.menu a,
+.toggled-on #access-secondary,
+.toggled-on #access-secondary ul.menu a,
+#colophon .toggled-on #access-footer,
+#colophon .toggled-on #access-footer ul.menu a,
+.dropdown-toggle {
+	background: none;
+	background-color: #ba3027;
+	border: none;
+}
+.toggled-on #access ul.menu li:hover > a,
+.toggled-on #access ul.menu a:focus,
+.toggled-on #access-secondary ul.menu li:hover > a,
+.toggled-on #access-secondary ul.menu a:focus,
+#colophon .toggled-on #access-footer ul.menu li:hover > a,
+#colophon .toggled-on #access-footer ul.menu a:focus,
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+	background: none;
+	background-color: #89251e;
+}
+.toggled-on #access ul.menu li,
+#branding .toggled-on #access-secondary ul.menu li,
+#colophon .toggled-on #access-footer ul.menu li {
+	border-left: none;
 }
