@@ -27,24 +27,7 @@ function cc_enqueue_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'cc_enqueue_scripts' );
-
-/**
- * @since 1.0
- * @author edi
- */
-function cc_wp_head() {
-    
-    // add search engine meta description to author-page: 
-    // http://www.codingcookie.com/author/edi
-    if(is_author('edi')) {
-        $about_the_author = 'Hi, my name is Eduard Gopp and I am a software developer from Austria. The goal of my website is to share knowledge and experience.';
-        echo '<meta name="description" content="'.$about_the_author.'"/>';
-        echo '<meta property="og:description" content="'.$about_the_author.'" />';
-    }
-}
-
-add_action('wp_head', 'cc_wp_head');   
-   
+ 
 /**
  * Override catchbox footer function to inject custom footer content.
  * 
@@ -61,25 +44,16 @@ function catchbox_footer_content() {
 </div>
 <div class="powered">
     <span>Author: </span>
-    <a title="Eduard Gopp on Linkedin" href="https://uk.linkedin.com/pub/eduard-gopp/a1/715/35" target="_blank">Eduard Gopp</a>
+    <a title="Eduard Gopp on Linkedin" href="https://www.linkedin.com/in/eduard-gopp/" target="_blank">Eduard Gopp</a>
 </div>
 <?php
 }
 
 function exclude_single_posts_home($query) {
   if ($query->is_home() && $query->is_main_query()) {
-    $query->set('post__not_in', array(343));
+    // 343: http://localhost:8080/bridge-pattern/
+    $query->set('post__not_in', array(343)); 
   }
 }
 
 add_action('pre_get_posts', 'exclude_single_posts_home');
-
-//add_filter('the_content', 'filter_the_content');
-//
-//function filter_the_content( $content ) {
-////    if(is_single( 'bridge-pattern' )) {
-////        return 'Sorry I have removed this article because I was not satisfied with it.<br/>'
-////        . 'I am sure you will find other good articles about this topic if you search the web.';
-////    }
-//    return $content;
-//}

@@ -8,3 +8,6 @@
 
 # ignore wp-config
 wp-config.php
+
+# ignore docker development directory
+/wordpress

@@ -16,3 +16,7 @@ RewriteRule . /index.php [L]
 <Files xmlrpc.php >
 deny from all
 </Files>
+
+<Files docker-compose.yml>
+deny from all
+</Files>
