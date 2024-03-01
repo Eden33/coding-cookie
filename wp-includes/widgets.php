@@ -1339,6 +1339,37 @@ function retrieve_widgets( $theme_changed = false ) {
 	}
 
 	// Discard invalid, theme-specific widgets from sidebars.
+
+	// Comment Edi - Bug fix START
+	// Problem: https://core.trac.wordpress.org/ticket/57469
+	// Solution: https://core.trac.wordpress.org/ticket/57469#comment:11
+	// Before this fix I had NULL entries in 'sidebars_widgets', 'theme_mods_catch-box' 
+	// and 'theme_mods_coding-cookie' entry in wp_options database table
+	// for 'wp_inactive_widgets', 'sidebar-2', 'sidebar-3' and 'sidebar-4'.
+	// The fix needs only to be in place temporarily while you iterate over the themes re-activating 
+	// them again.
+	// Entries before bug fix applied in dev env:
+	//	(96, 'sidebars_widgets', 'a:6:{s:19:\"wp_inactive_widgets\";N;s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";N;s:9:\"sidebar-3\";N;s:9:\"sidebar-4\";N;s:13:\"array_version\";i:3;}', 'yes'),
+	//	(143, 'theme_mods_catch-box', 'a:7:{i:0;b:0;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1709243739;s:4:\"data\";a:5:{s:19:\"wp_inactive_widgets\";N;s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";N;s:9:\"sidebar-3\";N;s:9:\"sidebar-4\";N;}}s:12:\"header_image\";s:0:\"\";s:17:\"header_image_data\";a:0:{}s:12:\"logo_version\";s:3:\"3.6\";s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}s:18:\"custom_css_post_id\";i:-1;}', 'yes'),
+	//	(152, 'theme_mods_coding-cookie', 'a:9:{i:0;b:0;s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}s:18:\"custom_css_post_id\";i:-1;s:12:\"header_image\";s:0:\"\";s:17:\"header_image_data\";a:0:{}s:12:\"logo_version\";s:3:\"3.6\";s:17:\"site_icon_version\";s:3:\"3.6\";s:22:\"catchbox_theme_options\";a:20:{s:14:\"excerpt_length\";i:40;s:12:\"color_scheme\";s:5:\"light\";s:21:\"header_image_position\";s:5:\"above\";s:10:\"link_color\";s:7:\"#1b8be0\";s:12:\"theme_layout\";s:13:\"right-sidebar\";s:14:\"content_layout\";s:7:\"excerpt\";s:16:\"site_title_above\";s:1:\"0\";s:21:\"disable_header_search\";s:1:\"0\";s:15:\"enable_sec_menu\";s:1:\"1\";s:18:\"enable_footer_menu\";s:1:\"0\";s:19:\"search_display_text\";s:6:\"Search\";s:19:\"exclude_slider_post\";s:1:\"0\";s:10:\"slider_qty\";i:4;s:17:\"transition_effect\";s:4:\"fade\";s:16:\"transition_delay\";i:4;s:19:\"transition_duration\";i:1;s:16:\"disable_scrollup\";s:1:\"0\";s:10:\"custom_css\";s:0:\"\";s:14:\"tracker_header\";s:0:\"\";s:14:\"tracker_footer\";s:480:\"<script>\r\n  (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){\r\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\r\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\r\n  })(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');\r\n\r\n ga(\'create\', \'UA-53925452-2\', \'auto\');\r\nga(\'set\', \'forceSSL\', true);\r\n ga(\'set\', \'anonymizeIp\', true); \r\n ga(\'send\', \'pageview\');\r\n\r\n</script>\";}s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1709243810;s:4:\"data\";a:5:{s:19:\"wp_inactive_widgets\";N;s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";N;s:9:\"sidebar-3\";N;s:9:\"sidebar-4\";N;}}}', 'yes'),	
+	// Entries before bug fix applied in dev env:
+	//	(96, 'sidebars_widgets', 'a:6:{s:19:\"wp_inactive_widgets\";a:2:{i:0;s:14:\"recent-posts-2\";i:1;s:17:\"recent-comments-2\";}s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}s:9:\"sidebar-4\";a:0:{}s:13:\"array_version\";i:3;}', 'yes'),
+	//	(143, 'theme_mods_catch-box', 'a:7:{i:0;b:0;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1709328217;s:4:\"data\";a:5:{s:19:\"wp_inactive_widgets\";a:2:{i:0;s:14:\"recent-posts-2\";i:1;s:17:\"recent-comments-2\";}s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}s:9:\"sidebar-4\";a:0:{}}}s:12:\"header_image\";s:0:\"\";s:17:\"header_image_data\";a:0:{}s:12:\"logo_version\";s:3:\"3.6\";s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}s:18:\"custom_css_post_id\";i:-1;}', 'yes'),
+	//	(152, 'theme_mods_coding-cookie', 'a:5:{s:12:\"header_image\";s:0:\"\";s:17:\"header_image_data\";a:0:{}s:12:\"logo_version\";s:3:\"3.6\";s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1709328225;s:4:\"data\";a:5:{s:19:\"wp_inactive_widgets\";a:2:{i:0;s:14:\"recent-posts-2\";i:1;s:17:\"recent-comments-2\";}s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}s:9:\"sidebar-4\";a:0:{}}}s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}}', 'yes'),
+
+	$log_msg = print_r($sidebars_widgets, true);
+	error_log("Before remove null elements from sidebar_widgets ----------", 0);
+	error_log($log_msg, 0);
+
+	// remove any NULL elements
+	$sidebars_widgets = array_filter($sidebars_widgets);
+
+	$log_msg = print_r($sidebars_widgets, true);
+	error_log("After remove null elements from sidebar_widgets ----------", 0);
+	error_log($log_msg, 0);
+
+	// Comment Edi - Bug fix END
+	
 	$sidebars_widgets = _wp_remove_unregistered_widgets( $sidebars_widgets, $registered_widgets_ids );
 	$sidebars_widgets = wp_map_sidebars_widgets( $sidebars_widgets );
 
