@@ -1357,19 +1357,22 @@ function retrieve_widgets( $theme_changed = false ) {
 	//	(143, 'theme_mods_catch-box', 'a:7:{i:0;b:0;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1709328217;s:4:\"data\";a:5:{s:19:\"wp_inactive_widgets\";a:2:{i:0;s:14:\"recent-posts-2\";i:1;s:17:\"recent-comments-2\";}s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}s:9:\"sidebar-4\";a:0:{}}}s:12:\"header_image\";s:0:\"\";s:17:\"header_image_data\";a:0:{}s:12:\"logo_version\";s:3:\"3.6\";s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}s:18:\"custom_css_post_id\";i:-1;}', 'yes'),
 	//	(152, 'theme_mods_coding-cookie', 'a:5:{s:12:\"header_image\";s:0:\"\";s:17:\"header_image_data\";a:0:{}s:12:\"logo_version\";s:3:\"3.6\";s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1709328225;s:4:\"data\";a:5:{s:19:\"wp_inactive_widgets\";a:2:{i:0;s:14:\"recent-posts-2\";i:1;s:17:\"recent-comments-2\";}s:9:\"sidebar-1\";a:5:{i:0;s:8:\"search-2\";i:1;s:12:\"categories-2\";i:2;s:11:\"tag_cloud-3\";i:3;s:10:\"archives-2\";i:4;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}s:9:\"sidebar-4\";a:0:{}}}s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:6;}}', 'yes'),
 
+/*
 	$log_msg = print_r($sidebars_widgets, true);
 	error_log("Before remove null elements from sidebar_widgets ----------", 0);
 	error_log($log_msg, 0);
-
+*/
 	// remove any NULL elements
+/*
 	$sidebars_widgets = array_filter($sidebars_widgets);
 
 	$log_msg = print_r($sidebars_widgets, true);
 	error_log("After remove null elements from sidebar_widgets ----------", 0);
 	error_log($log_msg, 0);
+*/
 
 	// Comment Edi - Bug fix END
-	
+
 	$sidebars_widgets = _wp_remove_unregistered_widgets( $sidebars_widgets, $registered_widgets_ids );
 	$sidebars_widgets = wp_map_sidebars_widgets( $sidebars_widgets );
 
